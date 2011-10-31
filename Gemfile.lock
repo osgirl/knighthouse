@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/pilu/web-app-theme.git
+  revision: 86fe95c4947ca9a0cc07a24133fb89c5d2b8ecdd
+  specs:
+    web-app-theme (0.8.0)
+      rails (~> 3.1.0.rc6)
+      thor (~> 0.14)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -154,3 +162,4 @@ DEPENDENCIES
   sqlite3
   turn
   uglifier (>= 1.0.3)
+  web-app-theme!
