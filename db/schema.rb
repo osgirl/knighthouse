@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031173530) do
+ActiveRecord::Schema.define(:version => 20111031210742) do
+
+  create_table "clients", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "old_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["old_id"], :name => "index_clients_on_old_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

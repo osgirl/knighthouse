@@ -1,7 +1,9 @@
 <div class="block">
-  <h3>Simple Block</h3>
+  <h3>Import Data</h3>
   <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <%= form_for :import, :url => import_path, :html => { :class => "form" } do |f| %>
+    	<%= f.label :data_file %> <%= f.file_field :data %> <%= f.submit "Import" %>
+    <% end %>
   </div>
 </div>
 <div class="block">
