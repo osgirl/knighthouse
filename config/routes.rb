@@ -1,5 +1,7 @@
 Knighthouse::Application.routes.draw do
+
   devise_for :users
+  resources :clients
 
   match "/import" => "home#import", :as => :import
   root :to => "home#index"

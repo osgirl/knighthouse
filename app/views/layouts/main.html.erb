@@ -19,10 +19,10 @@
       </div>
       <div id="main-navigation">
         <ul class="wat-cf">
-          <li class="active"><%= link_to "Home" %></li>
+          <li<% if params[:controller] == "home" %> class="active"<% end %>><%= link_to "Home", root_path %></li>
           <li><%= link_to "Orders" %></li>
           <li><%= link_to "Inventory" %></li>
-          <li><%= link_to "Clients" %></li>
+          <li<% if params[:controller] == "clients" %> class="active"<% end %>><%= link_to "Clients", clients_path %></li>
           <li><%= link_to "Administration" %></li>
         </ul>
       </div>
@@ -40,6 +40,7 @@
         <div id="footer">
           <div class="block">
             <p>Copyright &copy; <%= Time.now.year %> Web App.</p>
+            <p><%= params %></p>
           </div>
         </div>
       </div>

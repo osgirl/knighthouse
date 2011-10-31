@@ -10,7 +10,7 @@ gem 'devise'
 gem 'web-app-theme', :git => 'git://github.com/pilu/web-app-theme.git'
 gem 'rubyzip'
 gem 'roo'
-
+gem 'kaminari'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
