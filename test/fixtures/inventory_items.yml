@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  old_item_id: 1
+  item_type_id: 1
+  inventory_count: 1
+  cost_per_day: 9.99
+  max_cost: 9.99
+  actual_cost: 9.99
+  current_location_id: 1
+  age_start_date: 2011-10-31 16:23:49
+  date_received: 2011-10-31 16:23:49
+  is_retired: false
+
+two:
+  old_item_id: 1
+  item_type_id: 1
+  inventory_count: 1
+  cost_per_day: 9.99
+  max_cost: 9.99
+  actual_cost: 9.99
+  current_location_id: 1
+  age_start_date: 2011-10-31 16:23:49
+  date_received: 2011-10-31 16:23:49
+  is_retired: false

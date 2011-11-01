@@ -11,17 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031210742) do
+ActiveRecord::Schema.define(:version => 20111031232456) do
 
   create_table "clients", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "old_id"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "clients", ["old_id"], :name => "index_clients_on_old_id", :unique => true
+
+  create_table "inventory_items", :force => true do |t|
+    t.integer  "old_item_id"
+    t.integer  "item_type_id"
+    t.integer  "current_location_id"
+    t.integer  "inventory_count"
+    t.decimal  "cost_per_day"
+    t.decimal  "max_cost"
+    t.decimal  "actual_cost"
+    t.datetime "age_start_date"
+    t.datetime "date_received"
+    t.boolean  "is_retired"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inventory_items", ["old_item_id"], :name => "index_inventory_items_on_old_item_id", :unique => true
+
+  create_table "item_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_types", ["name"], :name => "index_item_types_on_name", :unique => true
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["hash"], :name => "index_locations_on_hash", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
