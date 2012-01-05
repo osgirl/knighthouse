@@ -2,7 +2,7 @@ require 'digest/md5'
 
 class Location < ActiveRecord::Base
 	def self.compute_hash(street_address, city)
-		Digest::MD5.hexdigest(street_address.downcase + city.downcase)
+		Digest::MD5.hexdigest(street_address.strip.downcase + city.strip.downcase)
 	end
 
 	def self.find_by_hash(street_address, city)

@@ -1,0 +1,45 @@
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <% if params[:controller] == 'orders' %>
+    <th>Client</th>
+    <% end %>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Items</th>
+    <th class="last">&nbsp;</th>
+  </tr>
+  <% @orders.each do |order| -%>
+  <tr class="<%= cycle("odd", "even") %>">
+    <td>
+      <%= link_to t(order.created_at), order %>
+    </td>
+    <% if params[:controller] == 'orders' %>
+    <td><%= link_to order.client.name, order.client %></td>
+    <% end %>
+    <td><%= link_to order.location.name, order.location %></td>
+    <td><%= order.friendly_status %></td>
+    <td>
+      <% order.order_item_lines.each do |line| -%>
+        <%= link_to line.item_type.name, line.inventory_item %> 
+      <% end -%>
+    </td>
+    <td class="last">
+      <% if params[:controller] == 'orders' %>
+       <%= link_to "#{t("web-app-theme.show", :default => "Show")}", order_path(order) %> |
+       <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_order_path(order) %> |
+       <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", order_path(order), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      <% else %>
+      &nbsp;
+      <% end %>
+    </td>
+  </tr>
+  <% end -%>
+</table>
+<div class="actions-bar wat-cf">
+  <div class="actions">
+  </div>
+  
+  <%= paginate @orders  %>
+  
+</div>

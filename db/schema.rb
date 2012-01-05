@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031232456) do
+ActiveRecord::Schema.define(:version => 20120105054911) do
 
   create_table "clients", :force => true do |t|
     t.string   "first_name"
@@ -24,17 +24,23 @@ ActiveRecord::Schema.define(:version => 20111031232456) do
 
   add_index "clients", ["old_id"], :name => "index_clients_on_old_id", :unique => true
 
+  create_table "delivery_point_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "inventory_items", :force => true do |t|
     t.integer  "old_item_id"
     t.integer  "item_type_id"
     t.integer  "current_location_id"
-    t.integer  "inventory_count"
-    t.decimal  "cost_per_day"
-    t.decimal  "max_cost"
-    t.decimal  "actual_cost"
+    t.integer  "inventory_count",     :default => 1
+    t.decimal  "cost_per_day",        :default => 0.0
+    t.decimal  "max_cost",            :default => 0.0
+    t.decimal  "actual_cost",         :default => 0.0
     t.datetime "age_start_date"
     t.datetime "date_received"
-    t.boolean  "is_retired"
+    t.boolean  "is_retired",          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +66,30 @@ ActiveRecord::Schema.define(:version => 20111031232456) do
   end
 
   add_index "locations", ["hash"], :name => "index_locations_on_hash", :unique => true
+
+  create_table "order_item_lines", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "item_type_id"
+    t.integer  "inventory_item_id"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "location_id"
+    t.integer  "client_id"
+    t.string   "alternate_phone"
+    t.text     "directions"
+    t.integer  "delivery_point_type_id"
+    t.integer  "delivery_type"
+    t.float    "miles"
+    t.integer  "time"
+    t.datetime "scheduled_delivery_date"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

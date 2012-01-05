@@ -1,0 +1,71 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", inventory_items_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_inventory_item_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", inventory_item_path %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.old_item_id", :default => t("activerecord.labels.old_item_id", :default => "Old item")) %>:</b>
+          <%= @inventory_item.old_item_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.item_type_id", :default => t("activerecord.labels.item_type_id", :default => "Item type")) %>:</b>
+          <%= @inventory_item.item_type_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.current_location_id", :default => t("activerecord.labels.current_location_id", :default => "Current location")) %>:</b>
+          <%= @inventory_item.current_location_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.inventory_count", :default => t("activerecord.labels.inventory_count", :default => "Inventory count")) %>:</b>
+          <%= @inventory_item.inventory_count %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.cost_per_day", :default => t("activerecord.labels.cost_per_day", :default => "Cost per day")) %>:</b>
+          <%= @inventory_item.cost_per_day %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.max_cost", :default => t("activerecord.labels.max_cost", :default => "Max cost")) %>:</b>
+          <%= @inventory_item.max_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.actual_cost", :default => t("activerecord.labels.actual_cost", :default => "Actual cost")) %>:</b>
+          <%= @inventory_item.actual_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.age_start_date", :default => t("activerecord.labels.age_start_date", :default => "Age start date")) %>:</b>
+          <%= @inventory_item.age_start_date %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.date_received", :default => t("activerecord.labels.date_received", :default => "Date received")) %>:</b>
+          <%= @inventory_item.date_received %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.inventory_item.is_retired", :default => t("activerecord.labels.is_retired", :default => "Is retired")) %>:</b>
+          <%= @inventory_item.is_retired %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_inventory_item_path(@inventory_item), :class => "button" %>
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), inventory_item_path(@inventory_item), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>
+
+      <h3>Orders</h3>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

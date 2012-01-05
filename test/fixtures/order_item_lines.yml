@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  order_id: 1
+  item_type_id: 1
+  inventory_item_id: 1
+  notes: MyText
+
+two:
+  order_id: 1
+  item_type_id: 1
+  inventory_item_id: 1
+  notes: MyText

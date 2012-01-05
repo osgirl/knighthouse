@@ -8,7 +8,6 @@
   </div>
   <div class="content">
     <div class="inner">
-      
         <p>
           <b><%= t("activerecord.attributes.client.first_name", :default => t("activerecord.labels.first_name", :default => "First name")) %>:</b>
           <%= @client.first_name %>
@@ -20,13 +19,22 @@
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.client.old_id", :default => t("activerecord.labels.old_id", :default => "Old")) %>:</b>
+          <b><%= t("activerecord.attributes.client.old_id", :default => t("activerecord.labels.old_id", :default => "Old Id")) %>:</b>
           <%= @client.old_id %>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_client_path(@client), :class => "button" %>
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), client_path(@client), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
       </div>
+
+      <h3>Locations</h3>
+
+      <h3>Orders</h3>
+      <%= render :partial => 'orders/order_list' %>
+
+      <h3>Items in Possession</h3>
+
+      <h3>Past Items</h3>
     </div>
   </div>
 </div>

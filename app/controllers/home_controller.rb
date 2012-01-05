@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 
   end
 
+  def settings
+
+  end
+
 end

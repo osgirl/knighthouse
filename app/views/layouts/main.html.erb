@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Web App</title>
+  <title><%= application_title %></title>
   <%= stylesheet_link_tag 'web_app_theme' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
@@ -9,21 +9,22 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/">Web App</a></h1>
+      <h1><a href="/"><%= application_title %></a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
-          <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
-          <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
+          <li><a>Hi <strong><%= current_user.name %>!</a></li>
+          <li><%= link_to t("web-app-theme.settings", :default => "Your Settings"), settings_path %></a></li>
           <li><%= link_to t("web-app-theme.logout", :default => "Logout"), destroy_user_session_path, :method => :delete %></a></li>
         </ul>
       </div>
       <div id="main-navigation">
         <ul class="wat-cf">
           <li<% if params[:controller] == "home" %> class="active"<% end %>><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Orders" %></li>
-          <li><%= link_to "Inventory" %></li>
+          <li<% if params[:controller] == "orders" %> class="active"<% end %>><%= link_to "Orders", orders_path %></li>
+          <li<% if params[:controller] == "inventory_items" %> class="active"<% end %>><%= link_to "Inventory", inventory_items_path %></li>
           <li<% if params[:controller] == "clients" %> class="active"<% end %>><%= link_to "Clients", clients_path %></li>
-          <li><%= link_to "Administration" %></li>
+          <li<% if params[:controller] == "locations" %> class="active"<% end %>><%= link_to "Locations", locations_path %></li>
+          <li<% if params[:controller] == "administration" %> class="active"<% end %>><%= link_to "Administration", administration_path %></li>
         </ul>
       </div>
     </div>
@@ -39,7 +40,7 @@
         <%= yield %>
         <div id="footer">
           <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Web App.</p>
+            <p>Copyright &copy; <%= Time.now.year %> <%= organization_name %>.</p>
             <p><%= params %></p>
           </div>
         </div>
