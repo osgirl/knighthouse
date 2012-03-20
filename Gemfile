@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
+source 'http://torquebox.org/2x/builds/LATEST/gem-repo/'
 
-gem 'rails', '3.1.1'
+gem 'rails', '~> 3.2'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,6 +12,7 @@ gem 'web-app-theme', :git => 'git://github.com/pilu/web-app-theme.git'
 gem 'rubyzip'
 gem 'roo'
 gem 'kaminari'
+gem 'role_model'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

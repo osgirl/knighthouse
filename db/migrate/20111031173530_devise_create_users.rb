@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.trackable
 
       t.string :name, :nullable => false
+      t.string :roles_mask, :nullable => false, :default => 0
 
       # t.encryptable
       # t.confirmable
@@ -23,7 +24,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
 
-    User.create!(:name => "Chris Carter", :email => "chris@carterventures.com", :password => "password", :password_confirmation => "password")
+    u = User.create!(:name => "Chris Carter", :email => "chris@carterventures.com", :password => "password", :password_confirmation => "password")
+    u.
   end
 
   def self.down
