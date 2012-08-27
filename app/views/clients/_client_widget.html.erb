@@ -1,0 +1,7 @@
+<div class="well client-widget">
+	<% if !customer.new_record? %>
+		<%= render :partial => 'clients/view', :locals => { :customer => customer } %>
+	<% else %>
+		<%= render :partial => 'clients/lookup', :locals => { :customer => customer } %>
+	<% end %>
+</div>

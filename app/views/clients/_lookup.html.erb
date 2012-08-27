@@ -1,0 +1,7 @@
+<%= simple_form_for :find, :url => lookup_clients_path, :html => { :class => 'form-inline' } do |f| %>
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :date_of_birth %>
+	<%= f.input :referrer_name %>
+	<%= f.submit "Search" %>
+<% end %>

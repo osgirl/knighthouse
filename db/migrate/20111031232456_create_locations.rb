@@ -5,11 +5,11 @@ class CreateLocations < ActiveRecord::Migration
       t.string :street_address
       t.string :city
       t.string :state
-      t.string :hash
+      t.string :location_hash
 
       t.timestamps
     end
 
-    add_index :locations, :hash, :unique => true
+    add_index :locations, :location_hash, :unique => true
   end
 end

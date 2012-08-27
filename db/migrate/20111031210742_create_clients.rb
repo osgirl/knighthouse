@@ -5,6 +5,10 @@ class CreateClients < ActiveRecord::Migration
       t.string :last_name
       t.integer :old_id
       t.string :phone
+      t.datetime :date_of_birth
+      t.integer :weight
+      t.integer :height
+      t.string :referrer_name
 
       t.timestamps
     end

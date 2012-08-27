@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Web App</title>
-  <%= stylesheet_link_tag "web_app_theme" %>
-  <%= csrf_meta_tag %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Knighthouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag "bootstrap", "bootstrap-responsive" %>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-color: #D9EDF7 !important;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= javascript_include_tag "application", "bootstrap"  %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container">
-    <div id="box">
-      <%= yield %>
-    </div>
+  <div class="container">
+  	<%= yield %>
+    <div></div>
   </div>
 </body>
 </html>

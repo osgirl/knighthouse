@@ -1,15 +1,20 @@
 Knighthouse::Application.routes.draw do
 
-  
   get "administration/" => "administration#index", :as => :administration
   get "administration/index"
   get "/settings" => "home#settings"
 
   devise_for :users
-  resources :clients
+  resources :clients do
+    collection do
+      get "lookup" => "clients#lookup"
+    end
+  end
   resources :orders
   resources :inventory_items
   resources :locations
+  resources :deliveries
+  resources :receiving
 
   match "/import" => "home#import", :as => :import
   root :to => "home#index"

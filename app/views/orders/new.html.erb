@@ -1,18 +1,68 @@
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", orders_path  %></li>
-      <li class="active"><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_order_path %></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h2 class="title"><%= t("web-app-theme.new", :default => "New")%>  Order</h2>
-    <div class="inner">
-      <%= form_for :order, :url => orders_path, :html => { :class => :form } do |f| -%>
-        <%= render :partial => "form", :locals => {:f => f} %>
-      <% end -%>
-    </div>
-  </div>
-</div>
+<h2>Create New Order</h2>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<%= simple_form_for @order, :url => orders_path do |f| -%>
+<h3>Who are we speaking to?</h3>
+<%= f.simple_fields_for :contact do |contact| %>
+	<%= contact.input :first_name %>
+	<%= contact.input :last_name %>
+	<%= contact.input :id, :as => :hidden %>
+<% end %>
+<%= f.input :referrer_name %>
+
+<h3>Who is this order for?</h3>
+<%= f.simple_fields_for :client do |client| %>
+	<%= client.input :first_name %>
+	<%= client.input :last_name %>
+	<%= client.input :date_of_birth, :as => :date %>
+	<%= client.input :id, :as => :hidden %>
+<% end %>
+
+<h3>What kind of order is this?</h3>
+<%= f.input :delivery_type, :as => :radio_buttons, :collection => Order::DELIVERY_TYPES %>
+
+<h3>When will it be delivered?</h3>
+<%= f.input :scheduled_delivery_date, :as => :date %>
+
+<h3>What is the Delivery / Pickup Location?</h3>
+<%= f.simple_fields_for :location do |loc| %>
+	<%= loc.input :name %>
+	<%= loc.input :street %>
+	<%= loc.input :city %>
+	<%= loc.input :id, :as => :hidden %>
+<% end %>
+<%= f.association :delivery_point_type %>
+<%= f.input :delivery_point_detail %>
+<%= f.input :directions %>
+<%= f.input :miles %>
+<%= f.input :alternate_phone %>
+
+<h3>What items are in the order?</h3>
+
+<%= link_to_add_association raw('<i class="icon-plus"></i> Add an Item'), f, :order_item_lines, { "data-association-insertion-node" => "table#delivery-items tbody", "data-association-insertion-method" => "append", :partial => "order_delivery_line", :class => "btn" } %>
+<%= f.simple_fields_for :order_item_lines do |line| %>
+<table class="table" id="delivery-items">
+	<thead>
+		<tr>
+			<th>Item Type</th>
+			<th>Qty</th>
+			<th>Remove</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	<%= render :partial => "order_delivery_line", :locals => { :f => line } %>
+	
+	</tbody>
+</table>
+<% end %>
+Autocomplete box for item type, list how many items are available, type in how many needed, flag as waitlist if not enough available (inventory calc should take into account open orders), remove button
+
+<h3>(if picking up) What items are we picking up?</h3>
+Add button
+Autocomplete box for item type, box for item numbers, description for status of these items
+
+<%= f.button :submit %>
+
+<% end -%>
+
+<% content_for :actions, render(:partial => 'sidebar') -%>

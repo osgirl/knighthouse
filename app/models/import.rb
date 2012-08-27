@@ -1,3 +1,4 @@
+require 'iconv'
 require 'roo'
 
 class Import
@@ -51,7 +52,7 @@ class Import
 					type = ItemType.create!(:name => row[:inventory_type])
 				end
 
-				unless location = Location.find_by_hash(row[:street_address], row[:city])
+				unless location = Location.find_by_location_hash(row[:street_address], row[:city])
 					location = Location.create!(:street_address => row[:street_address], :city => row[:city], :state => 'WA')
 				end
 

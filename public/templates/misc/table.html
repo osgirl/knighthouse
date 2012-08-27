@@ -1,0 +1,25 @@
+<table class="table-striped table">
+  <thead>
+  	<tr>
+  		<% _.each(columns, function(col) { %>
+  		<th><%= col.header %></th>
+      <% }); %>
+  	</tr>
+  </thead>
+  <tbody>
+    <% _.each(items, function(item) { %>
+  	<tr>
+      <% _.each(columns, function(col) { %>
+      <td>
+        <% if (col.prop) { %>
+        <%= item.get(col.prop) %>
+        <% } else if (col.link) { %>
+        <% href = _.isFunction(col.link.href) ? col.link.href.call(this, item) : col.link.href %>
+        <a href="<%= href %>"<% if (col.link.data_id) { %>data-id="<%= item.get(col.link.data_id) %>"<% } %>><%= item.get(col.link.prop) %></a>
+        <% } %>
+      </td>
+      <% }); %>
+  	</tr>
+    <% }); %>
+  </tbody>
+ </table>

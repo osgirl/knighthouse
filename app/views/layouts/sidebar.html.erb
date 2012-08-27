@@ -1,0 +1,30 @@
+<%= content_for :body do %>
+<div class="page-header">
+  <h1><%= params[:controller].titleize %></h1>
+</div>
+<div class="row">
+	<% if content_for?(:actions) %>
+	<div class="menu-container span2 well">
+		<%= yield :actions %>
+	</div>
+	<% end %>
+	<% 
+		spansize = 6
+		if !content_for?(:actions)
+			spansize += 2
+		end
+		if !content_for?(:sidebar)
+			spansize += 3
+		end
+	%>
+	<div class="content-container span<%= spansize %>">
+		<%= yield %>
+	</div>
+	<% if content_for?(:sidebar) %>
+	<div class="actions-container span3">
+		<%= yield :sidebar %>
+	</div>
+	<% end %>
+</div>
+<% end %>
+<%= render :template => 'layouts/application2' %>

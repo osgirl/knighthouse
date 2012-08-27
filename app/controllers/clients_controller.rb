@@ -6,6 +6,10 @@ class ClientsController < ApplicationController
   	@clients = Client.order("last_name ASC").page(params[:page])
   end
 
+  def lookup
+
+  end
+
   def show
   	@client = Client.find params[:id]
     @orders = @client.orders.page(params[:page])
@@ -14,6 +18,10 @@ class ClientsController < ApplicationController
 
   def new
   	@client = Client.new
+  end
+
+  def create
+    
   end
 
   def edit

@@ -1,13 +1,6 @@
-<div class="block notice">
-  <h3>Simple Block</h3>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</div>
-<div class="block">
-  <h3>Links</h3>
-  <ul class="navigation">
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
-  </ul>
-</div>
+<ul class="nav nav-pills nav-stacked">
+	<li class="nav-header">Show Orders</li>
+	<li<%= chk_active(params[:action] == "index") %>><a href="<%= url_for(orders_path) %>"><i class="icon-list-alt icon-white"></i> All Orders</a></li>
+	<li class="nav-header">Actions</li>
+	<li<%= chk_active(params[:action] == "new") %>><a href="<%= new_order_path %>"><i class="icon-plus-sign"></i> New Order</a></li>
+</ul>

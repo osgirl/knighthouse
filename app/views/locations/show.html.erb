@@ -30,8 +30,8 @@
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.location.hash", :default => t("activerecord.labels.hash", :default => "Hash")) %>:</b>
-          <%= @location.hash %>
+          <b><%= t("activerecord.attributes.location.location_hash", :default => t("activerecord.labels.location_hash", :default => "Hash")) %>:</b>
+          <%= @location.location_hash %>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_location_path(@location), :class => "button" %>

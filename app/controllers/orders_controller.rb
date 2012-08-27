@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-	layout 'main'
+	layout 'sidebar'
   before_filter :authenticate_user!
   
   def index
@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def new
   	@order = Order.new
+    @order.client = Client.new
   end
 
   def edit

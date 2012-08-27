@@ -1,0 +1,5 @@
+<tr class="nested-fields">
+	<td><%= f.text_field :item_type_name %><%= f.input :item_type_id, :as => :hidden %></td>
+	<td><%= f.text_field :qty %></td>
+	<td><%= link_to_remove_association raw('<i class="icon-remove"></i>'), f, :class => "btn btn-danger" %></td>
+</tr>
